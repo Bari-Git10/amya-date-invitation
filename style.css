@@ -1,0 +1,388 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster:wght@400&family=Bubble:wght@400&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: white;
+}
+
+.screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.screen.active {
+    display: flex;
+}
+
+/* Screen 1: Invitation Card */
+#screen1 {
+    background: white;
+}
+
+.invitation-card {
+    background: white;
+    border: 3px solid black;
+    border-radius: 15px;
+    padding: 60px 80px;
+    text-align: center;
+    max-width: 600px;
+    position: relative;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.envelope-icon {
+    font-size: 60px;
+    margin-bottom: 20px;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+}
+
+.flowers-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 30px 0;
+    position: relative;
+}
+
+.flower {
+    font-size: 50px;
+    animation: sway 4s ease-in-out infinite;
+}
+
+.left-flower {
+    animation-delay: 0s;
+}
+
+.right-flower {
+    animation-delay: 1s;
+}
+
+@keyframes sway {
+    0%, 100% { transform: rotate(-5deg); }
+    50% { transform: rotate(5deg); }
+}
+
+.invitation-title {
+    font-size: 32px;
+    color: black;
+    margin: 30px 0;
+    font-weight: bold;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.btn {
+    padding: 15px 40px;
+    font-size: 18px;
+    border: 2px solid black;
+    background: white;
+    cursor: pointer;
+    border-radius: 25px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.yes-btn {
+    background: black;
+    color: white;
+}
+
+.yes-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.no-btn {
+    background: white;
+    color: black;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Screen 2: Movie Selection */
+#screen2 {
+    background: white;
+}
+
+.movie-card {
+    background: white;
+    border: 3px solid black;
+    border-radius: 15px;
+    padding: 60px 80px;
+    text-align: center;
+    max-width: 700px;
+}
+
+.movie-card h2 {
+    font-size: 28px;
+    margin-bottom: 50px;
+    color: black;
+}
+
+.movie-options {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.bubble-btn {
+    padding: 18px 50px;
+    font-size: 20px;
+    border: none;
+    background: black;
+    color: white;
+    cursor: pointer;
+    border-radius: 50px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    letter-spacing: 2px;
+}
+
+.bubble-btn:hover {
+    transform: scale(1.08);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+.bubble-btn:active {
+    transform: scale(0.98);
+}
+
+/* Screen 3: Time Confirmation */
+#screen3 {
+    background: white;
+}
+
+.time-card {
+    background: white;
+    border: 3px solid black;
+    border-radius: 15px;
+    padding: 60px 80px;
+    text-align: center;
+    max-width: 700px;
+}
+
+.time-card h2 {
+    font-size: 26px;
+    margin-bottom: 50px;
+    color: black;
+}
+
+.time-button-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.ok-btn {
+    background: black;
+    color: white;
+    padding: 18px 50px;
+    font-size: 18px;
+}
+
+.ok-btn:hover {
+    transform: scale(1.05);
+}
+
+.chase-btn {
+    padding: 18px 30px;
+    font-size: 16px;
+    background: black;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: bold;
+    position: relative;
+}
+
+/* Screen 4: Celebration */
+#screen4 {
+    background: white;
+}
+
+.celebration-container {
+    text-align: center;
+    position: relative;
+}
+
+.confetti {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+.confetti-piece {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #ff1744;
+    opacity: 0.8;
+    animation: confetti-fall 3s ease-out forwards;
+}
+
+@keyframes confetti-fall {
+    to {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.thank-you-text {
+    font-size: 48px;
+    color: black;
+    font-weight: bold;
+    margin-bottom: 50px;
+}
+
+.gift-section {
+    margin-top: 60px;
+}
+
+.gift-label {
+    font-size: 24px;
+    color: black;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+.present-box {
+    font-size: 120px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.present-box:hover {
+    transform: scale(1.15) rotate(10deg);
+}
+
+.present-box:active {
+    transform: scale(0.95);
+}
+
+/* Screen 5: Roses */
+#screen5 {
+    background: white;
+}
+
+.roses-container {
+    text-align: center;
+    position: relative;
+}
+
+.roses {
+    font-size: 200px;
+    margin-bottom: 60px;
+    animation: roses-appear 1s ease-out;
+}
+
+@keyframes roses-appear {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.close-btn {
+    padding: 18px 50px;
+    font-size: 18px;
+    background: black;
+    color: white;
+    margin-top: 40px;
+}
+
+.close-btn:hover {
+    transform: scale(1.05);
+}
+
+/* Screen 6: Final Message */
+#screen6 {
+    background: black;
+    justify-content: center;
+    align-items: center;
+}
+
+.final-message {
+    text-align: center;
+}
+
+.final-message h1 {
+    font-family: 'Lobster', cursive;
+    font-size: 80px;
+    color: white;
+    letter-spacing: 3px;
+    animation: final-glow 2s ease-in-out infinite;
+}
+
+@keyframes final-glow {
+    0%, 100% { text-shadow: 0 0 20px rgba(255, 192, 203, 0.8); }
+    50% { text-shadow: 0 0 40px rgba(255, 192, 203, 1); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .invitation-card, .movie-card, .time-card {
+        padding: 40px 30px;
+        max-width: 90%;
+    }
+    
+    .invitation-title {
+        font-size: 24px;
+    }
+    
+    .movie-card h2, .time-card h2 {
+        font-size: 20px;
+    }
+    
+    .thank-you-text {
+        font-size: 36px;
+    }
+    
+    .final-message h1 {
+        font-size: 60px;
+    }
+    
+    .button-container {
+        gap: 15px;
+    }
+}

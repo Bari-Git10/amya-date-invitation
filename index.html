@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Special Invitation 💕</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Screen 1: Main Invitation -->
+    <div id="screen1" class="screen active">
+        <div class="invitation-card">
+            <div class="envelope-icon">📬</div>
+            
+            <div class="flowers-container">
+                <div class="flower left-flower">🌼</div>
+                <div class="flower right-flower">🌼</div>
+            </div>
+            
+            <h1 class="invitation-title">Amya will you go on a date with me :)</h1>
+            
+            <div class="button-container">
+                <button class="btn yes-btn" onclick="goToScreen2()">Yes</button>
+                <button class="btn no-btn" id="noBtn">No</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Screen 2: Movie Selection -->
+    <div id="screen2" class="screen">
+        <div class="movie-card">
+            <h2>Which movie do you want to watch? 🎬</h2>
+            
+            <div class="movie-options">
+                <button class="bubble-btn movie-option" onclick="selectMovie('Buddy')">
+                    <span>Buddy</span>
+                </button>
+                <button class="bubble-btn movie-option" onclick="selectMovie('Insidious')">
+                    <span>Insidious</span>
+                </button>
+                <button class="bubble-btn movie-option" onclick="selectMovie('Onslaught')">
+                    <span>Onslaught</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Screen 3: Time Confirmation -->
+    <div id="screen3" class="screen">
+        <div class="time-card">
+            <h2>I get off work at 6 so the movie will be around 7 🎥</h2>
+            
+            <div class="time-button-container">
+                <button class="btn ok-btn" id="okBtn">Ok</button>
+                <button class="btn chase-btn" id="chaseBtn">Ok then after that we gonna get married and go to Japan</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Screen 4: Celebration with Gift -->
+    <div id="screen4" class="screen">
+        <div class="celebration-container">
+            <div class="confetti" id="confetti"></div>
+            <h2 class="thank-you-text">Thank You Beautiful</h2>
+            
+            <div class="gift-section">
+                <p class="gift-label">These are for you</p>
+                <div class="present-box" onclick="openGift()">🎁</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Screen 5: Roses Animation -->
+    <div id="screen5" class="screen">
+        <div class="roses-container">
+            <div class="roses" id="roses"></div>
+            <button class="btn close-btn" onclick="goToScreen6()">Close Invitation</button>
+        </div>
+    </div>
+
+    <!-- Screen 6: Final Message -->
+    <div id="screen6" class="screen">
+        <div class="final-message">
+            <h1>I Love You Amya</h1>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
