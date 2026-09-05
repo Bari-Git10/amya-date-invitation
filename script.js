@@ -1,9 +1,11 @@
-// Screen Navigation
+// Screen Navigation with Transitions
 function showScreen(screenId) {
     document.querySelectorAll('.screen').forEach(screen => {
         screen.classList.remove('active');
     });
-    document.getElementById(screenId).classList.add('active');
+    setTimeout(() => {
+        document.getElementById(screenId).classList.add('active');
+    }, 50);
 }
 
 function goToScreen2() {
@@ -95,14 +97,17 @@ function openGift() {
     rosesDiv.style.fontSize = '100px';
     rosesDiv.style.animation = 'roses-appear 1s ease-out';
     
-    // Hide the gift box
+    // Hide the gift box and label
     const presentBox = document.querySelector('.present-box');
     presentBox.style.display = 'none';
     
-    // Show close button
-    const closeBtn = document.querySelector('.close-btn');
-    closeBtn.style.display = 'inline-block';
-    closeBtn.style.animation = 'fadeIn 0.5s ease-in';
+    const giftLabel = document.querySelector('.gift-label');
+    giftLabel.style.display = 'none';
+    
+    // Move to screen 5 with transition
+    setTimeout(() => {
+        showScreen('screen5');
+    }, 300);
 }
 
 // Add fade in animation
