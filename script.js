@@ -1,4 +1,4 @@
-// Screen Navigation with Transitions
+// Screen Navigation with Slide Transitions
 function showScreen(screenId) {
     document.querySelectorAll('.screen').forEach(screen => {
         screen.classList.remove('active');
@@ -42,7 +42,28 @@ noBtn.addEventListener('mouseover', function() {
     }, 600);
 });
 
-// Chase Button Logic (Ok button on screen 3)
+// OK Button Chase Logic (can't click it)
+const okBtn = document.getElementById('okBtn');
+let isOkChasing = false;
+
+okBtn.addEventListener('mouseover', function() {
+    if (isOkChasing) return;
+    isOkChasing = true;
+    
+    const randomX = Math.random() * (window.innerWidth - 100);
+    const randomY = Math.random() * (window.innerHeight - 100);
+    
+    okBtn.style.position = 'fixed';
+    okBtn.style.left = randomX + 'px';
+    okBtn.style.top = randomY + 'px';
+    okBtn.style.transition = 'all 0.6s ease-out';
+    
+    setTimeout(() => {
+        isOkChasing = false;
+    }, 600);
+});
+
+// Chase Button Logic (the one that actually works)
 const chaseBtn = document.getElementById('chaseBtn');
 let isChasingOk = false;
 
@@ -50,17 +71,9 @@ chaseBtn.addEventListener('mouseover', function() {
     if (isChasingOk) return;
     isChasingOk = true;
     
-    const randomX = Math.random() * (window.innerWidth - 200);
-    const randomY = Math.random() * (window.innerHeight - 100);
-    
-    chaseBtn.style.position = 'fixed';
-    chaseBtn.style.left = randomX + 'px';
-    chaseBtn.style.top = randomY + 'px';
-    chaseBtn.style.transition = 'all 0.7s ease-out';
-    
     setTimeout(() => {
         isChasingOk = false;
-    }, 700);
+    }, 500);
 });
 
 // When the chase button is finally clicked
@@ -108,6 +121,29 @@ function openGift() {
     setTimeout(() => {
         showScreen('screen5');
     }, 300);
+}
+
+// Fill Screen with Hearts
+function fillWithHearts() {
+    const heartContainer = document.getElementById('heart-fill');
+    heartContainer.innerHTML = '';
+    
+    for (let i = 0; i < 50; i++) {
+        const heart = document.createElement('div');
+        heart.className = 'falling-heart';
+        heart.innerHTML = '💖';
+        
+        heart.style.left = Math.random() * 100 + '%';
+        heart.style.top = Math.random() * 100 + '%';
+        heart.style.animationDelay = Math.random() * 0.5 + 's';
+        
+        heartContainer.appendChild(heart);
+    }
+    
+    // Clear after animation
+    setTimeout(() => {
+        heartContainer.innerHTML = '';
+    }, 2500);
 }
 
 // Add fade in animation

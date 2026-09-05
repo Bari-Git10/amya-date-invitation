@@ -12,7 +12,10 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: white;
+    background-image: url('IMG_8905.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
 }
 
 .screen {
@@ -26,17 +29,19 @@ body {
     align-items: center;
     z-index: 1;
     opacity: 0;
-    transition: opacity 0.5s ease-in-out;
+    transform: translateX(100%);
+    transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 .screen.active {
     display: flex;
     opacity: 1;
+    transform: translateX(0);
 }
 
 /* Screen 1: Invitation Card */
 #screen1 {
-    background: white;
+    background: rgba(0, 0, 0, 0.3);
 }
 
 .invitation-card {
@@ -119,6 +124,7 @@ body {
 .yes-btn:hover {
     transform: scale(1.05);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    animation: shake 0.5s ease-in-out;
 }
 
 .no-btn {
@@ -129,9 +135,15 @@ body {
     transform: translateX(-50%);
 }
 
+@keyframes shake {
+    0%, 100% { transform: scale(1.05) translateX(0); }
+    25% { transform: scale(1.05) translateX(-5px); }
+    75% { transform: scale(1.05) translateX(5px); }
+}
+
 /* Screen 2: Movie Selection */
 #screen2 {
-    background: white;
+    background: rgba(0, 0, 0, 0.3);
 }
 
 .movie-card {
@@ -172,6 +184,7 @@ body {
 .bubble-btn:hover {
     transform: scale(1.08);
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+    animation: shake 0.5s ease-in-out;
 }
 
 .bubble-btn:active {
@@ -180,7 +193,7 @@ body {
 
 /* Screen 3: Time Confirmation */
 #screen3 {
-    background: white;
+    background: rgba(0, 0, 0, 0.3);
 }
 
 .time-card {
@@ -210,10 +223,13 @@ body {
     color: white;
     padding: 18px 50px;
     font-size: 18px;
+    cursor: not-allowed;
+    opacity: 0.5;
 }
 
 .ok-btn:hover {
-    transform: scale(1.05);
+    transform: none;
+    cursor: not-allowed;
 }
 
 .chase-btn {
@@ -228,9 +244,13 @@ body {
     position: relative;
 }
 
+.chase-btn:hover {
+    animation: shake 0.5s ease-in-out;
+}
+
 /* Screen 4: Celebration */
 #screen4 {
-    background: white;
+    background: rgba(0, 0, 0, 0.3);
 }
 
 .celebration-container {
@@ -268,6 +288,10 @@ body {
     color: black;
     font-weight: bold;
     margin-bottom: 50px;
+    background: white;
+    padding: 20px 40px;
+    border-radius: 15px;
+    border: 3px solid black;
 }
 
 .gift-section {
@@ -298,10 +322,7 @@ body {
 
 /* Screen 5: Roses */
 #screen5 {
-    background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+    background: rgba(0, 0, 0, 0.3);
 }
 
 .roses-container {
@@ -363,13 +384,38 @@ body {
 
 /* Screen 6: Final Message */
 #screen6 {
-    background: black;
+    background: rgba(0, 0, 0, 0.3);
     justify-content: center;
     align-items: center;
+    position: relative;
+}
+
+.heart-clickables {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: space-around;
+    padding: 40px;
+    flex-wrap: wrap;
+    pointer-events: none;
+}
+
+.clickable-heart {
+    font-size: 60px;
+    cursor: pointer;
+    pointer-events: all;
+    transition: all 0.3s ease;
+}
+
+.clickable-heart:hover {
+    transform: scale(1.3);
 }
 
 .final-message {
     text-align: center;
+    z-index: 2;
 }
 
 .final-message h1 {
@@ -378,11 +424,40 @@ body {
     color: white;
     letter-spacing: 3px;
     animation: final-glow 2s ease-in-out infinite;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 @keyframes final-glow {
-    0%, 100% { text-shadow: 0 0 20px rgba(255, 192, 203, 0.8); }
-    50% { text-shadow: 0 0 40px rgba(255, 192, 203, 1); }
+    0%, 100% { text-shadow: 0 0 20px rgba(255, 192, 203, 0.8), 2px 2px 4px rgba(0, 0, 0, 0.5); }
+    50% { text-shadow: 0 0 40px rgba(255, 192, 203, 1), 2px 2px 4px rgba(0, 0, 0, 0.5); }
+}
+
+/* Heart Fill Container */
+.heart-fill-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 100;
+}
+
+.falling-heart {
+    position: absolute;
+    font-size: 60px;
+    animation: heart-fall 2s ease-out forwards;
+}
+
+@keyframes heart-fall {
+    0% {
+        opacity: 1;
+        transform: translateY(-100px) rotate(0deg) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(100vh) rotate(360deg) scale(0);
+    }
 }
 
 /* Responsive Design */
