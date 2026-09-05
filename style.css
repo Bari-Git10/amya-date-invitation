@@ -12,10 +12,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-image: url('IMG_8905.jpeg');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
 .screen {
